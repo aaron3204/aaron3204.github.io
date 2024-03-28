@@ -1,3 +1,10 @@
+let light1 = "#edf6f9";
+let light2 = "#ffddd2";
+let dark1 = "#196d77";
+let dark2 = "#012529";
+let dark3 = "#e29578";
+
+
 let double_tap_wait = 400;
 let double_tap_timer = null;
 
@@ -92,9 +99,13 @@ document.body.addEventListener("keyup", (event)=>{
 
 function update_colour(idName, keyPressed){
     if(keyPressed){
-        document.getElementById(idName).style.backgroundColor = "cornflowerblue"
+        document.getElementById(idName).style.backgroundColor = dark1
+        document.getElementById(idName).style.color = light1
+        document.getElementById(idName).style.border = "2px solid "+light1
     }else{
-        document.getElementById(idName).style.backgroundColor = "#6420AA"
+        document.getElementById(idName).style.backgroundColor = light2
+        document.getElementById(idName).style.color = dark1
+        document.getElementById(idName).style.border = "2px solid "+dark1
     }
 
 }
@@ -143,9 +154,6 @@ function xupdate(className){
     switch (mode){
         case 0:
             mode_text = "Mode: User Interaction Mode";
-
-            
-
             break;
         case 1:
             mode_text = "Mode: Chat Mode";
@@ -222,20 +230,25 @@ function xupdate(className){
         element.innerHTML = menu_text;
     })
     for(let i=1;i<=4;i++){
-        document.getElementsByClassName("menu"+i)[0].style.backgroundColor = "#FFB5DA"
+        document.getElementsByClassName("menu"+i)[0].style.backgroundColor = light1
+        document.getElementsByClassName("menu"+i)[0].style.color = dark1
+        document.getElementsByClassName("menu"+i)[0].style.border = "3px solid "+dark1
     }
-    document.getElementsByClassName("menu"+(menu+1))[0].style.backgroundColor = "#77ebfd"
+    document.getElementsByClassName("menu"+(menu+1))[0].style.backgroundColor = dark1
+    document.getElementsByClassName("menu"+(menu+1))[0].style.color = light1
+    document.getElementsByClassName("menu"+(menu+1))[0].style.border = "3px solid "+light1
 }
 
-function show_internal_working(){
-    console.log(visibility)
+
+function show_help(){
     if(visibility){
-        document.getElementById("info_internal").style.visibility = "hidden";
-        document.getElementById("button").innerHTML = "Show Internal Working"
-        visibility = 0;
+        document.getElementById("help_box").style.display="none"
+        document.getElementById("button_help").innerHTML="Show Help"
+        visibility=0
     }else{
-        document.getElementById("info_internal").style.visibility = "visible";
-        document.getElementById("button").innerHTML = "Hide Internal Working"
-        visibility = 1;
+        document.getElementById("help_box").style.display="block"
+        document.getElementById("button_help").innerHTML="Hide Help"
+        visibility=1
+
     }
 }
